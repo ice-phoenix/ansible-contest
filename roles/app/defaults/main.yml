@@ -12,6 +12,9 @@ application_run_dir: "{{ virtualenv_path }}/run"
 application_log_file: "{{ application_log_dir }}/gunicorn_supervisor.log"
 requirements_file: "{{ project_path }}/requirements.txt"
 
+db_dir: "{{ virtualenv_path }}/db"
+persistent_dir: "/var/persistent"
+
 # Gunicorn settings
 gunicorn_user: "{{ application_name }}"
 gunicorn_group: webapps

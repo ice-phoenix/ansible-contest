@@ -2,3 +2,31 @@
 
 - name: Install packages required by the Flask app inside virtualenv
   pip: virtualenv={{ virtualenv_path }} requirements={{ requirements_file }}
+
+- name: Ensure persistent directory is owned by gunicorn_user
+  file:
+    path: "{{ persistent_dir }}"
+    state: directory
+    recurse: yes
+    owner: "{{ gunicorn_user }}"
+    group: "{{ gunicorn_group }}"
+
+- name: Ensure database folder exists and is owned by gunicorn_user
+  file: path={{ db_dir }}
+        owner={{ gunicorn_user }}
+        group={{ gunicorn_group }}
+        mode=0770
+        state=directory
+
+- name: Create the Flask DB init script
+  template: src=flask_db_init.j2
+            dest={{ virtualenv_path }}/bin/flask_db_init
+            owner={{ gunicorn_user }}
+            group={{ gunicorn_group }}
+            mode=0755
+            backup=yes
+
+- name: Initialise Flask DB
+  become: true
+  become_user: "{{ gunicorn_user }}"
+  shell: "{{ virtualenv_path }}/bin/flask_db_init"

@@ -61,13 +61,6 @@
   register: p
 
 - name: Create (or retain) the application log file
-  # Removing until https://github.com/ansible/ansible/issues/45530 gets resolved.
-  # copy: content=""
-  #       dest={{ application_log_file }}
-  #       owner={{ gunicorn_user }}
-  #       group={{ gunicorn_group }}
-  #       mode=0664
-  #       force=no
   file:
     path: "{{ application_log_file }}"
     owner: "{{ gunicorn_user }}"

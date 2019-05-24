@@ -1,10 +1,17 @@
 #!/bin/sh
 
-NAME="{{ application_name }}"
 FLASKDIR="{{ project_path }}"
+
+# Environment variables for Flask
+export DB_DIR={{ db_dir }}
+export PERSISTENT_DIR={{ persistent_dir }}
 
 # Activate the virtual environment.
 cd $FLASKDIR
 . {{ virtualenv_path }}/bin/activate
 
-flask db init
+# Flask has some issues when run on ASCII locale
+export LC_ALL=C.UTF-8
+export LANG=C.UTF-8
+
+flask db upgrade
