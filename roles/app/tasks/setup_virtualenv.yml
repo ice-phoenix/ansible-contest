@@ -45,14 +45,14 @@
   file: path={{ application_log_dir }}
         owner={{ gunicorn_user }}
         group={{ gunicorn_group }}
-        mode=0774
+        mode=0775
         state=directory
 
 - name: Create the application run folder
   file: path={{ application_run_dir }}
         owner={{ gunicorn_user }}
         group={{ gunicorn_group }}
-        mode=0774
+        mode=0775
         state=directory
 
 - name: Check for an existing application logfile
