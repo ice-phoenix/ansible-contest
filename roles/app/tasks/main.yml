@@ -11,4 +11,5 @@
 - include: setup_flask_app.yml
   tags: deploy
 
-  
+- include: setup_supervisor.yml
+  tags: supervisor
