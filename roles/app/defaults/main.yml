@@ -1,0 +1,19 @@
+---
+
+# VirtualEnv settings
+recreate_virtualenv: false
+virtualenv_python_version: "{{ base_python_package }}"
+
+# Application settings.
+virtualenv_path: "/webapps/{{ project_name }}"
+project_path: "{{ virtualenv_path }}/{{ application_name }}"
+application_log_dir: "{{ virtualenv_path }}/logs"
+application_run_dir: "{{ virtualenv_path }}/run"
+application_log_file: "{{ application_log_dir }}/gunicorn_supervisor.log"
+requirements_file: "{{ project_path }}/requirements.txt"
+
+# Gunicorn settings
+gunicorn_user: "{{ application_name }}"
+gunicorn_group: webapps
+gunicorn_num_workers: 3
+gunicorn_max_requests: 0

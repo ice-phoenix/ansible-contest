@@ -1,0 +1,10 @@
+#!/bin/sh
+
+NAME="{{ application_name }}"
+FLASKDIR="{{ project_path }}"
+
+# Activate the virtual environment.
+cd $FLASKDIR
+. {{ virtualenv_path }}/bin/activate
+
+flask db init

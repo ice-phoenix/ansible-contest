@@ -1,0 +1,12 @@
+---
+
+git_repo: git@github.com:icfpcontest2019/grading.git
+git_branch: api
+setup_git_repo: true
+
+# Set this flag to true so you can checkout code from a private git repository
+# which is setup with an SSH key.
+ssh_forward_agent: true
+
+project_name: icfpcontest2019
+application_name: grading

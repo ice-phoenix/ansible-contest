@@ -1,0 +1,14 @@
+---
+
+- include: create_users_and_groups.yml
+
+- include: setup_virtualenv.yml
+  tags: virtualenv
+
+- include: setup_git_repo.yml
+  tags: deploy
+
+- include: setup_flask_app.yml
+  tags: deploy
+
+  
