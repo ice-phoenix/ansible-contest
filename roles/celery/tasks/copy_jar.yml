@@ -1,0 +1,10 @@
+---
+
+- name: Transfer {{ jar_name }} to remote machine
+  copy:
+    src: "{{ playbook_dir }}/{{ jar_name }}"
+    dest: "{{ project_path }}/{{ jar_name }}"
+    owner: "{{ gunicorn_user }}"
+    group: "{{ gunicorn_group }}"
+    mode: 0555
+

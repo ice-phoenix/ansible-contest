@@ -9,3 +9,7 @@ nginx_use_letsencrypt: false
 letsencrypt_dir: "/etc/letsencrypt/live/{{ inventory_hostname }}"
 letsencrypt_cert_filename: fullchain.pem
 letsencrypt_privkey_filename: privkey.pem
+
+# Nginx settings.
+nginx_access_log_file: "{{ application_log_dir }}/nginx_access.log"
+nginx_error_log_file: "{{ application_log_dir }}/nginx_error.log"

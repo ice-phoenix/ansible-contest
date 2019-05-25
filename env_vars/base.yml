@@ -4,6 +4,10 @@ git_repo: git@github.com:icfpcontest2019/grading.git
 git_branch: api
 setup_git_repo: true
 
+jar_name: icfpcontest2019.jar
+problems_dir: "problems/"
+persistent_dir: "/var/persistent"
+
 # Set this flag to true so you can checkout code from a private git repository
 # which is setup with an SSH key.
 ssh_forward_agent: true

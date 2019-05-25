@@ -1,0 +1,17 @@
+---
+
+- name: Install virtualenv
+  pip:
+    name: virtualenv
+    version: 15.1.0
+  tags: packages
+
+- name: Ensure no existing virtualenv exists
+  file:
+    state: absent
+    path: "{{ virtualenv_path }}/"
+  when: recreate_virtualenv
+
+- name: Create the virtualenv
+  command: virtualenv -p {{ virtualenv_python_version }} {{ virtualenv_path }}
+           creates={{ virtualenv_path }}/bin/activate

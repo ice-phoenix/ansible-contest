@@ -1,0 +1,10 @@
+---
+
+- include: setup_gunicorn.yml
+  tags: gunicorn
+
+- include: setup_flask_app.yml
+  tags: deploy
+
+- include: setup_supervisor.yml
+  tags: supervisor

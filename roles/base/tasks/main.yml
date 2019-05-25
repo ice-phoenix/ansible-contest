@@ -23,6 +23,8 @@
       - libcurl4-nss-dev
       - nmap
       - tmux
+      - openjdk-8-jre-headless
+      - scala
 
   tags:
     - packages

@@ -1,0 +1,14 @@
+---
+
+# VirtualEnv settings
+recreate_virtualenv: false
+virtualenv_python_version: "{{ base_python_package }}"
+
+# Application settings.
+virtualenv_path: "/webapps/{{ project_name }}"
+project_path: "{{ virtualenv_path }}/{{ application_name }}"
+requirements_file: "{{ project_path }}/requirements.txt"
+
+# Gunicorn settings
+gunicorn_user: "{{ application_name }}"
+gunicorn_group: webapps

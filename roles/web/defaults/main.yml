@@ -1,0 +1,15 @@
+---
+
+# VirtualEnv settings
+recreate_virtualenv: false
+virtualenv_python_version: "{{ base_python_package }}"
+
+# Application settings.
+application_log_dir: "{{ virtualenv_path }}/logs"
+application_run_dir: "{{ virtualenv_path }}/run"
+application_log_file: "{{ application_log_dir }}/gunicorn_supervisor.log"
+db_dir: "{{ virtualenv_path }}/db"
+
+# Gunicorn settings
+gunicorn_num_workers: 3
+gunicorn_max_requests: 0

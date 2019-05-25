@@ -2,4 +2,7 @@
 *.retry
 *.log
 
+problems/
+icfpcontest2019.jar
+
 .vagrant/
