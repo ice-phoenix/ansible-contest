@@ -1,0 +1,10 @@
+---
+
+- include: copy_scripts.yml
+  tags: flower
+
+- include: setup_supervisor.yml
+  tags: flower
+
+- include: restart_flower.yml
+  tags: flower

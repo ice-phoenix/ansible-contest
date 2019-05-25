@@ -7,4 +7,5 @@
     owner: "{{ gunicorn_user }}"
     group: "{{ gunicorn_group }}"
     mode: 0555
+    force: yes
 

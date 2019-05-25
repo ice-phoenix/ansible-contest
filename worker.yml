@@ -10,9 +10,4 @@
   roles:
     - base
     - app-base
-    - problems
-    - rabbitmq
-    - celery
-    - nginx
-    - web
- 
+    - celery 

@@ -1,0 +1,5 @@
+---
+
+- name: Restart Celery worker
+  command: echo "Restart Celery worker"
+  notify: restart {{ celery_application_name }}

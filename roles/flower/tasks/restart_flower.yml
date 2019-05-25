@@ -1,0 +1,4 @@
+---
+- name: Restart Flower
+  command: echo "Restart Flower"
+  notify: restart {{ flower_application_name }}

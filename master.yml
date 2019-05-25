@@ -1,0 +1,19 @@
+---
+- hosts: all
+  become: true
+  vars:
+    update_apt_cache: true
+  vars_files:
+    - env_vars/base.yml
+    - roles/base/defaults/main.yml
+    
+  roles:
+    - base
+    - app-base
+    - problems
+    - rabbitmq
+    - celery
+    - flower
+    - nginx
+    - web
+ 

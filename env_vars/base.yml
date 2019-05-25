@@ -4,18 +4,25 @@ git_repo: git@github.com:icfpcontest2019/grading.git
 git_branch: api
 setup_git_repo: true
 
-jar_name: icfpcontest2019.jar
-problems_dir: "problems/"
-persistent_dir: "/var/persistent"
+project_name: icfpcontest2019
+application_name: grading
 
 # Set this flag to true so you can checkout code from a private git repository
 # which is setup with an SSH key.
 ssh_forward_agent: true
 
-project_name: icfpcontest2019
-application_name: grading
+# Persistent
+jar_name: icfpcontest2019.jar
+problems_dir: "problems/"
+persistent_dir: "/var/persistent"
 
+# Broker 
+broker_ip: 192.168.33.10
 rmq_password: password
+rabbitmq_application_user: "{{ application_name }}"
+rabbitmq_application_password: "{{ rmq_password }}"
+broker_url: "amqp://{{ rabbitmq_application_user }}:{{ rabbitmq_application_password }}@{{ broker_ip }}:5672"
+broker_api: "http://{{ rabbitmq_application_user }}:{{ rabbitmq_application_password }}@{{ broker_ip }}:15672/api/"
 
 # Nginx settings.
 ssl_crt: |

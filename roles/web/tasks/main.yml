@@ -8,3 +8,7 @@
 
 - include: setup_supervisor.yml
   tags: supervisor
+
+- name: Restart Gunicorn
+  command: echo "Restart Gunicorn"
+  notify: restart {{ application_name }}
