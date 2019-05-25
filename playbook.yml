@@ -9,5 +9,6 @@
     
   roles:
     - base
-    - app
+    - rabbitmq
     - nginx
+    - app

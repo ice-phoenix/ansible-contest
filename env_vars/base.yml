@@ -11,6 +11,7 @@ ssh_forward_agent: true
 project_name: icfpcontest2019
 application_name: grading
 
+rmq_password: password
 
 # Nginx settings.
 ssl_crt: |
