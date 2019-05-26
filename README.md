@@ -1,5 +1,10 @@
 # Ansible playbooks
 
+You need to install:
+
+* `vagrant`
+* `ansible`
+
 ## NFS
 
 The `app` role assumes the directory `/var/persistent` exists and is
