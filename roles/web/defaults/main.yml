@@ -11,5 +11,5 @@ application_log_file: "{{ application_log_dir }}/gunicorn_supervisor.log"
 db_dir: "{{ virtualenv_path }}/db"
 
 # Gunicorn settings
-gunicorn_num_workers: 3
+gunicorn_num_workers: "{{ ansible_processor_vcpus *2+1|int}}"
 gunicorn_max_requests: 0

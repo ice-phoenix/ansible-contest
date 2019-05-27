@@ -10,4 +10,4 @@ cd $FLASKDIR
 
 # Programs meant to be run under supervisor should not daemonize themselves
 # (do not use --daemon).
-exec celery flower -A app.celery --broker={{ broker_url }} --broker_api={{ broker_api }} --address=0.0.0.0 --port=5555 --basic_auth={{ flower_login }}:{{ flower_password }} --natural_time=false
+exec celery flower -A app.celery --broker={{ broker_url }} --broker_api={{ broker_api }} --address=0.0.0.0 --port=5555 --basic_auth={{ flower_login }}:{{ flower_password }} --natural_time=false --persistent --db={{ db_dir }}/flower.db

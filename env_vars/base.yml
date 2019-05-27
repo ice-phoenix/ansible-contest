@@ -21,8 +21,10 @@ broker_ip: 192.168.33.10
 rmq_password: password
 rabbitmq_application_user: "{{ application_name }}"
 rabbitmq_application_password: "{{ rmq_password }}"
+rabbitmq_admin_user: admin
+rabbitmq_admin_password: "{{ rmq_password }}"
 broker_url: "amqp://{{ rabbitmq_application_user }}:{{ rabbitmq_application_password }}@{{ broker_ip }}:5672"
-broker_api: "http://{{ rabbitmq_application_user }}:{{ rabbitmq_application_password }}@{{ broker_ip }}:15672/api/"
+broker_api: "http://{{ rabbitmq_admin_user }}:{{ rabbitmq_application_password }}@{{ broker_ip }}:15672/api/"
 
 # Nginx settings.
 ssl_crt: |
