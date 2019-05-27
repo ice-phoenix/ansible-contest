@@ -11,4 +11,4 @@ cd $FLASKDIR
 
 # Programs meant to be run under supervisor should not daemonize themselves
 # (do not use --daemon).
-exec celery -A app.celery worker --loglevel=info -E -O fair --concurrency={{ celery_num_workers }}
+exec celery -A app.celery worker --loglevel=info -E -O fair --concurrency={{ celery_num_workers }} --prefetch-multiplier=1
