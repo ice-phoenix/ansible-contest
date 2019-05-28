@@ -1,9 +1,12 @@
 # Ansible playbooks
 
-You need to install:
+You need to install `vagrant`. Then:
 
-* `vagrant`
-* `ansible`
+```
+python3 -m venv venv
+. venv/bin/activate
+pip3 install -r requirements.txt
+```
 
 ## NFS
 
@@ -18,8 +21,26 @@ directory) contains:
 * `icfpcontest2019.jar`
 * `problems/`
 
-# Run
+## Run
 
 ```
 vagrant up
 ```
+
+## AWS Dynamic Inventory
+
+From the `contrib` folder, copy the `ec2.py` script to `/etc/ansible/hosts` and
+`chmod +x` it. Also copy `ec2.ini` to `/etc/ansible/ec2.ini`.
+
+Create a file `cred.sh`:
+
+```
+export AWS_ACCESS_KEY_ID='abc123'
+export AWS_SECRET_ACCESS_KEY='abc123'
+```
+
+Before running ansible:
+`source cred.sh`
+
+
+We are using the `ami-08d658f84a6d84a80` Ubuntu Server 18.04 LTS image.

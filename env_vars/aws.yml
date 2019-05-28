@@ -1,0 +1,16 @@
+---
+
+ec2_region: "eu-west-1"
+master_instance_type: "t2.micro"
+worker_instance_type: "t2.micro"
+ami_image: "ami-08d658f84a6d84a80"
+worker_spot_price: 0.10
+spot_wait_timeout: 600
+
+num_workers: 2
+
+efs_id: "fs-2b2211e3"
+
+key_name: "dranov-ssh"
+master_security_group: ["base", "master"]
+worker_security_group: "base"

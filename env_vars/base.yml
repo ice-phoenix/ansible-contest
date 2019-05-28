@@ -17,8 +17,7 @@ problems_dir: "problems/"
 persistent_dir: "/var/persistent"
 
 # Broker 
-broker_ip: 192.168.33.10
-rmq_password: password
+rmq_password: bb56bd9e304b339464d34f274776714803cec4ef1509c8e5b8749040200557e9
 rabbitmq_application_user: "{{ application_name }}"
 rabbitmq_application_password: "{{ rmq_password }}"
 rabbitmq_admin_user: admin

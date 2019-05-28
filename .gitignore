@@ -2,7 +2,9 @@
 *.retry
 *.log
 
+cred.sh
 problems/
 icfpcontest2019.jar
 
 .vagrant/
+venv/

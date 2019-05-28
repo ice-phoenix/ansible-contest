@@ -1,0 +1,7 @@
+---
+
+aws_profile: "default"
+aws_region: "{{ ec2_region }}"
+nfs_package: "nfs-common"
+efs_file_system_id: "{{ efs_id }}"
+efs_mount_dir: "{{ persistent_dir }}"

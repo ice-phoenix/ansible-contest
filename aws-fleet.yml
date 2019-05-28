@@ -1,0 +1,119 @@
+---
+- name: ICFP Contest 2019 infrastructure
+  hosts: localhost
+  connection: local
+  gather_facts: false
+
+  vars_files:
+    - env_vars/aws.yml
+
+  # This file assumes you have already set-up the security groups
+  tasks:
+    - name: Launch master
+      local_action:
+        module: ec2
+        region: "{{ ec2_region }}"
+        key_name: "{{ key_name }}"
+        instance_type: "{{ master_instance_type }}"
+        image: "{{ ami_image }}"
+        group: "{{ master_security_group }}"
+        instance_tags:
+          Role: "master"
+        exact_count: 1
+        count_tag:
+          Role: "master"
+        wait: yes
+      register: mst
+
+    - name: Add new instance to host group
+      add_host:
+        hostname: "{{ item.public_ip }}"
+        groupname: master
+      with_items: "{{ mst.instances }}"
+
+    - name: Wait for master SSH to come up
+      wait_for:
+        host: "{{ item.public_dns_name }}"
+        port: 22
+        delay: 60
+        timeout: 900
+        state: started
+      with_items: "{{ mst.instances }}"
+
+
+    - name: Launch {{ num_workers }} workers
+      local_action:
+        module: ec2
+        region: "{{ ec2_region }}"
+        key_name: "{{ key_name }}"
+        instance_type: "{{ master_instance_type }}"
+        image: "{{ ami_image }}"
+        group: "{{ master_security_group }}"
+        instance_tags:
+          Role: "worker"
+        exact_count: "{{ num_workers }}"
+        count_tag:
+          Role: "worker"
+        wait: yes
+      register: wrk
+
+    - name: Add new instance to host group
+      add_host:
+        hostname: "{{ item.public_ip }}"
+        groupname: workers
+      with_items: "{{ wrk.instances }}"
+
+    - name: Wait for workers' SSH to come up
+      wait_for:
+        host: "{{ item.public_dns_name }}"
+        port: 22
+        delay: 60
+        timeout: 900
+        state: started
+      with_items: "{{ wrk.instances }}"
+
+- name: Provision master
+  hosts: tag_Role_master
+  remote_user: ubuntu
+  become: true
+  gather_facts: true
+  # Keep this ahead of vars_files
+  vars:
+    update_apt_cache: true
+    broker_ip: "{{ hostvars[groups['tag_Role_master'][0]].ansible_default_ipv4.address }}"
+  vars_files:
+    - env_vars/base.yml
+    - env_vars/aws.yml
+    - roles/base/defaults/main.yml
+  pre_tasks:
+    - debug: var=broker_ip
+  roles:
+    - efs
+    - base
+    - app-base
+    - problems
+    - rabbitmq
+    - flower
+    - nginx
+    - web
+
+- name: Provision {{ num_workers }} workers
+  hosts: tag_Role_worker
+  remote_user: ubuntu
+  become: true
+  gather_facts: true
+  # Keep this ahead of vars_files
+  vars:
+    update_apt_cache: true
+    broker_ip: "{{ hostvars[groups['tag_Role_master'][0]].ansible_default_ipv4.address }}"
+  vars_files:
+    - env_vars/base.yml
+    - env_vars/aws.yml
+    - roles/base/defaults/main.yml
+  pre_tasks:
+    - debug: var=broker_ip
+  roles:
+    - efs
+    - base
+    - app-base
+    - celery
