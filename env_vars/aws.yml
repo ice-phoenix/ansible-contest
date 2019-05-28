@@ -7,7 +7,7 @@ ami_image: "ami-08d658f84a6d84a80"
 worker_spot_price: 0.10
 spot_wait_timeout: 600
 
-num_workers: 2
+num_workers: 1
 
 efs_id: "fs-2b2211e3"
 

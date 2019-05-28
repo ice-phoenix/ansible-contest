@@ -99,6 +99,22 @@ server {
         }
     }
 
+    # Allow teams to access their grading reports (by private id)
+    location /grades {
+        root {{ persistent_dir }};
+        autoindex off;
+    }
+
+    location ~ /grades/(.+) {
+        root {{ persistent_dir }};
+        autoindex on;
+    }
+
+    types {
+        text/plain csv;
+        text/plain txt;
+    }
+
     # Error pages
     error_page 503 /maintenance_on.html;
     location = /maintenance_on.html {
