@@ -40,15 +40,14 @@
         state: started
       with_items: "{{ mst.instances }}"
 
-
     - name: Launch {{ num_workers }} workers
       local_action:
         module: ec2
         region: "{{ ec2_region }}"
         key_name: "{{ key_name }}"
-        instance_type: "{{ master_instance_type }}"
+        instance_type: "{{ worker_instance_type }}"
         image: "{{ ami_image }}"
-        group: "{{ master_security_group }}"
+        group: "{{ worker_security_group }}"
         instance_tags:
           Role: "worker"
         exact_count: "{{ num_workers }}"
@@ -87,6 +86,11 @@
     - roles/base/defaults/main.yml
   pre_tasks:
     - debug: var=broker_ip
+    - name: Set authorized key for Ilya
+      authorized_key:
+        user: ubuntu
+        state: present
+        key: https://github.com/ilyasergey.keys
   roles:
     - efs
     - base
@@ -112,6 +116,11 @@
     - roles/base/defaults/main.yml
   pre_tasks:
     - debug: var=broker_ip
+    - name: Set authorized key for Ilya
+      authorized_key:
+        user: ubuntu
+        state: present
+        key: https://github.com/ilyasergey.keys
   roles:
     - efs
     - base
