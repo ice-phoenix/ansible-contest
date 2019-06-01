@@ -25,6 +25,8 @@
       - tmux
       - openjdk-8-jre-headless
       - scala
+      - nethogs
+      - iotop
 
   tags:
     - packages

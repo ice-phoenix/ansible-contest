@@ -13,6 +13,7 @@
     - base
     - app-base
     - problems
+    - cron
     - rabbitmq
     - flower
     - nginx

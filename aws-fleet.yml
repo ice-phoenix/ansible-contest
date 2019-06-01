@@ -48,6 +48,9 @@
         instance_type: "{{ worker_instance_type }}"
         image: "{{ ami_image }}"
         group: "{{ worker_security_group }}"
+        # spot_price: "{{ worker_spot_price }}"
+        # spot_wait_timeout: "{{ spot_wait_timeout }}"
+        # instance_initiated_shutdown_behavior: "terminate"
         instance_tags:
           Role: "worker"
         exact_count: "{{ num_workers }}"
@@ -96,6 +99,7 @@
     - base
     - app-base
     - problems
+    - cron
     - rabbitmq
     - flower
     - nginx

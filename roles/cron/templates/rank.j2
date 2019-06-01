@@ -1,0 +1,12 @@
+#!/bin/sh
+
+FLASKDIR="{{ project_path }}"
+
+# Activate the virtual environment.
+cd $FLASKDIR
+. {{ virtualenv_path }}/bin/activate
+
+export LC_ALL=C.UTF-8
+export LANG=C.UTF-8
+
+./rankings.py -p "{{ persistent_dir }}/{{ problems_dir}}" -g "{{ persistent_dir }}/{{ grades_dir }}" --output-folder "{{ persistent_dir }}/{{ rankings_dir}}"

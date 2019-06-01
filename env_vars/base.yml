@@ -14,6 +14,8 @@ ssh_forward_agent: true
 # Persistent
 jar_name: icfpcontest2019.jar
 problems_dir: "problems/"
+grades_dir: "grades/"
+rankings_dir: "rankings/"
 persistent_dir: "/var/persistent"
 
 # Broker 

@@ -99,6 +99,11 @@ server {
         }
     }
 
+    location /rankings {
+        root {{ persistent_dir }};
+        autoindex on;
+    }
+
     # Allow teams to access their grading reports (by private id)
     location /grades {
         root {{ persistent_dir }};
@@ -113,6 +118,7 @@ server {
     types {
         text/plain csv;
         text/plain txt;
+        text/html html;
     }
 
     # Error pages

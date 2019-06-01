@@ -1,0 +1,23 @@
+---
+
+- name: Ensure rankings folder exists and is owned by gunicorn_user
+  file: path={{ persistent_dir }}/{{ rankings_dir }}
+        owner={{ gunicorn_user }}
+        group={{ gunicorn_group }}
+        mode=0775
+        state=directory
+
+- name: Create the rankings script file
+  template: src=rank.j2
+            dest={{ virtualenv_path }}/bin/rank
+            owner={{ gunicorn_user }}
+            group={{ gunicorn_group }}
+            mode=0755
+            backup=yes
+
+- name: Add ranking cronjob
+  cron:
+    name: "generate rankings"
+    minute: "*/5"
+    hour: "*"
+    job: "{{ virtualenv_path }}/bin/rank &> /var/log/ranking.log"
