@@ -27,6 +27,12 @@ directory) contains:
 vagrant up
 ```
 
+To run for AWS:
+
+```
+ansible-playbook aws-fleet.yml
+```
+
 ## AWS Dynamic Inventory
 
 From the `contrib` folder, copy the `ec2.py` script to `/etc/ansible/hosts` and
@@ -41,6 +47,5 @@ export AWS_SECRET_ACCESS_KEY='abc123'
 
 Before running ansible:
 `source cred.sh`
-
 
 We are using the `ami-08d658f84a6d84a80` Ubuntu Server 18.04 LTS image.

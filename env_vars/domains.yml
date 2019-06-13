@@ -1,0 +1,6 @@
+---
+
+# Let's Encrypt
+domain_one: monadic-lab.org
+domain_two: lambdacoin.org
+nginx_use_letsencrypt: true

@@ -25,20 +25,27 @@
         wait: yes
       register: mst
 
+    - name: Associate elastic IP with master
+      ec2_eip:
+        device_id: "{{ item.id }}"
+        private_ip_address: "{{ item.private_ip}}"
+        region: "{{ ec2_region }}"
+        ip: "{{ master_public_ip }}"
+        in_vpc: yes
+      with_items: "{{ mst.tagged_instances }}"
+
     - name: Add new instance to host group
       add_host:
-        hostname: "{{ item.public_ip }}"
+        hostname: "{{ master_public_ip }}"
         groupname: master
-      with_items: "{{ mst.instances }}"
 
     - name: Wait for master SSH to come up
       wait_for:
-        host: "{{ item.public_dns_name }}"
+        host: "{{ master_public_ip }}"
         port: 22
         delay: 60
         timeout: 900
         state: started
-      with_items: "{{ mst.instances }}"
 
     - name: Launch {{ num_workers }} workers
       local_action:
@@ -86,6 +93,7 @@
   vars_files:
     - env_vars/base.yml
     - env_vars/aws.yml
+    - env_vars/domains.yml
     - roles/base/defaults/main.yml
   pre_tasks:
     - debug: var=broker_ip
@@ -103,6 +111,7 @@
     - rabbitmq
     - flower
     - nginx
+    - certbot
     - web
 
 - name: Provision {{ num_workers }} workers

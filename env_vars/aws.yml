@@ -9,6 +9,7 @@ ami_image: "ami-08d658f84a6d84a80"
 worker_spot_price: "0.5"
 spot_wait_timeout: "600"
 
+master_public_ip: 52.48.174.213
 num_workers: 1
 
 efs_id: "fs-2b2211e3"
