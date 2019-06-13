@@ -4,6 +4,9 @@
   apt: name=nginx update_cache={{ update_apt_cache }} state=present
   tags: packages
 
+- name: Write robots.txt to server
+  copy: content={{ robots_txt }} dest=/var/www/html/robots.txt
+
 - name: Copy the SSL certificate to the remote server
   copy: content={{ ssl_crt }} dest={{ nginx_ssl_dest_dir }}/{{ application_name }}.crt
   notify: restart nginx

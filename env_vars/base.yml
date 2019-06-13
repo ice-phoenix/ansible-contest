@@ -14,6 +14,7 @@ ssh_forward_agent: true
 # Persistent
 jar_name: icfpcontest2019.jar
 problems_dir: "problems/"
+blocks_dir: "blocks/"
 grades_dir: "grades/"
 rankings_dir: "rankings/"
 persistent_dir: "/var/persistent"
@@ -28,6 +29,10 @@ broker_url: "amqp://{{ rabbitmq_application_user }}:{{ rabbitmq_application_pass
 broker_api: "http://{{ rabbitmq_admin_user }}:{{ rabbitmq_application_password }}@{{ broker_ip }}:15672/api/"
 
 # Nginx settings.
+robots_txt: |
+  User-agent: *
+  Disallow: /
+
 ssl_crt: |
   -----BEGIN CERTIFICATE-----
   MIIDOjCCAiKgAwIBAgIBADANBgkqhkiG9w0BAQsFADAaMRgwFgYDVQQDDA9kZXYu

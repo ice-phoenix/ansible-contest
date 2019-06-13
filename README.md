@@ -20,6 +20,7 @@ directory) contains:
 
 * `icfpcontest2019.jar`
 * `problems/`
+* `blocks/`
 
 ## Run
 
@@ -49,3 +50,9 @@ Before running ansible:
 `source cred.sh`
 
 We are using the `ami-08d658f84a6d84a80` Ubuntu Server 18.04 LTS image.
+
+## SQlite Web
+
+```
+pip install sqlite-web
+sudo -u grading sqlite_web -P -H 0.0.0.0 /webapps/icfpcontest2019/db/app.db
