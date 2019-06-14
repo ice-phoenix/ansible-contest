@@ -102,6 +102,11 @@
         user: ubuntu
         state: present
         key: https://github.com/ilyasergey.keys
+    - name: Set authorized key for backup server
+      authorized_key:
+        user: ubuntu
+        state: present
+        key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDlCwqe1p+F3BLbupieSaAmjF/suCg+fRH8DX63sMq15tJy4kQHosUVhExfh4xOD8Q0tkRjh8SilCbL9v1gLHrOlcBNj8lXR/d3WfTzii8t4WpjxKasa/l8OtoXKwUkSZMKcWy6cX3T0pu48WVNiVQpE2PwyOe8vEn5pDFzTVxn4WbLeSFrQOOx5FY0uBTXx2pdVubhaWZQ/+GSF9vbyR5Mb0R5w6UZOJk5oymZrjQg+lHBGXB/t2FWUtf75ppXtQ+4loHvBXHzx+SU0bAHQhJTqmMhtdWtkPMp6rGe7sgDW6a3bZldX86ELDD7fbBTfTj1q6mk9lwoa2jiB0Qs2n8SddS/BhmnRBxl03QTFaPZdj2kOhboCubNXL9mU+ScCKTBiB8hxB7u8dJ2MT2qQ0aLx3WpOeEg7135zg9YFXTUdsjpYk+TklQyFZL8oF32qGFtCdEZAXDmmL7DVWn5OUFXyfyWa78AfIBdWWDDJtpVNHuOR8LiOHEGaWjxo06r6uZzTVOeNOql1IoPuja5t1EkJ1AAkSY+/bbvsSIySlG+2l34EauwKOB/MU0x0OHbEGqP1HTUPuKVBobaPbuhHsvrq9lGjmZOjoZUP0HAefEVOySFLULQYPqauzIZm+rH+j7kBDq80rUj8Nmon7qfd+PPV5Gv/4BqeLp+OnjJxtYnHw== sergey@sergey-icfp"
   roles:
     - efs
     - base

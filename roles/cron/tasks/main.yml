@@ -20,4 +20,4 @@
     name: "generate rankings"
     minute: "*/5"
     hour: "*"
-    job: "{{ virtualenv_path }}/bin/rank &> /var/log/ranking.log"
+    job: "{{ virtualenv_path }}/bin/rank >> {{ virtualenv_path }}/logs/ranking.log 2>&1"
