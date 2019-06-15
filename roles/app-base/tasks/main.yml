@@ -10,3 +10,6 @@
 
 - include: install_reqs.yml
   tags: deploy
+
+- include: copy_jar.yml
+  tags: deploy

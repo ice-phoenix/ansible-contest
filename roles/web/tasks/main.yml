@@ -1,14 +1,15 @@
 ---
 
 - include: setup_gunicorn.yml
-  tags: gunicorn
+  tags: deploy
 
 - include: setup_flask_app.yml
   tags: deploy
 
 - include: setup_supervisor.yml
-  tags: supervisor
+  tags: deploy
 
 - name: Restart Gunicorn
   command: echo "Restart Gunicorn"
   notify: restart {{ application_name }}
+  tags: deploy

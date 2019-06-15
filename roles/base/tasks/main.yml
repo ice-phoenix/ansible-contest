@@ -27,6 +27,7 @@
       - scala
       - nethogs
       - iotop
+      - sqlite
 
   tags:
     - packages
