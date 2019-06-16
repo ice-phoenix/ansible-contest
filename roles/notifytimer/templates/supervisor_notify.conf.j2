@@ -1,0 +1,10 @@
+[program:{{ notify_application_name }}]
+command={{ notify_scripts_dir }}/{{ notify_application_name }}_start
+
+autostart=true
+autorestart=true
+
+user={{ notify_user }}
+
+stdout_logfile={{ notify_log_file }}
+redirect_stderr = true

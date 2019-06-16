@@ -1,0 +1,15 @@
+---
+
+- name: Create the folder for the notify scripts
+  file: path={{ notify_scripts_dir }}
+        owner={{ notify_user }}
+        group={{ notify_group }}
+        mode=0774
+        state=directory
+
+- name: Create the {{ notify_application_name }} script file
+  template: src={{ notify_template_file }}
+            dest={{ notify_scripts_dir }}/{{ notify_application_name }}_start
+            owner={{ notify_user }}
+            group={{ notify_group }}
+            mode=0755

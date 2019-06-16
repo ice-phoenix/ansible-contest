@@ -21,6 +21,7 @@ persistent_dir: "/var/persistent"
 
 # Broker 
 rmq_password: bb56bd9e304b339464d34f274776714803cec4ef1509c8e5b8749040200557e9
+flw_password: d9ac94cac978a392636f9aad231a81d43f61aacc
 rabbitmq_application_user: "{{ application_name }}"
 rabbitmq_application_password: "{{ rmq_password }}"
 rabbitmq_admin_user: admin
@@ -28,6 +29,7 @@ rabbitmq_admin_password: "{{ rmq_password }}"
 broker_url: "amqp://{{ rabbitmq_application_user }}:{{ rabbitmq_application_password }}@{{ broker_ip }}:5672"
 broker_api: "http://{{ rabbitmq_admin_user }}:{{ rabbitmq_application_password }}@{{ broker_ip }}:15672/api/"
 notify_url: "https://lambdacoin.org/notify/block_created"
+timer_url: "https://lambdacoin.org/notify/block_timer"
 
 # Nginx settings.
 robots_txt: |

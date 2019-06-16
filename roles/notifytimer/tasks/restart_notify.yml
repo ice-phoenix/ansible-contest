@@ -1,0 +1,4 @@
+---
+- name: Restart notify
+  command: echo "Restart notify"
+  notify: restart {{ notify_application_name }}

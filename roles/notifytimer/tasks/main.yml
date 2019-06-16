@@ -1,0 +1,10 @@
+---
+
+- include: copy_scripts.yml
+  tags: notifytimer
+
+- include: setup_supervisor.yml
+  tags: notifytimer
+
+- include: restart_notify.yml
+  tags: notifytimer

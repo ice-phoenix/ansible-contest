@@ -115,6 +115,7 @@
     - cron
     - rabbitmq
     - flower
+    - notifytimer
     - nginx
     - certbot
     - web

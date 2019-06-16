@@ -1,0 +1,16 @@
+---
+
+server_root_dir: /webapps
+
+virtualenv_path: "/webapps/{{ project_name }}"
+project_path: "{{ virtualenv_path }}/{{ application_name }}"
+
+notify_user: "{{ application_name }}"
+notify_group: webapps
+
+notify_application_name: notify
+notify_scripts_dir: "{{ virtualenv_path }}/scripts/notify"
+notify_template_file: "{{ notify_application_name }}_start.j2"
+
+notify_log_dir: "{{ virtualenv_path }}/logs"
+notify_log_file: "{{ notify_log_dir }}/{{ notify_application_name }}.log"

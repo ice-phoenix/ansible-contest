@@ -9,7 +9,7 @@ flower_user: "{{ application_name }}"
 flower_group: webapps
 
 flower_login: admin
-flower_password: password
+flower_password: "{{ flw_password }}"
 
 flower_application_name: flower
 flower_scripts_dir: "{{ virtualenv_path }}/scripts/flower"
