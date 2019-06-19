@@ -2,6 +2,13 @@
 
 FLASKDIR="{{ project_path }}"
 
+export DB_DIR={{ db_dir }}
+export PERSISTENT_DIR={{ persistent_dir }}
+export BROKER_URL={{ broker_url }}
+export NOTIFY_URL={{ notify_url }}
+export BALANCES_URL={{ balances_url }}
+export TEAMS_URL={{ teams_url }}
+
 # Activate the virtual environment.
 cd $FLASKDIR
 . {{ virtualenv_path }}/bin/activate

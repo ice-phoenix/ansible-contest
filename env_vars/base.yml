@@ -1,7 +1,7 @@
 ---
 
 git_repo: git@github.com:icfpcontest2019/grading.git
-git_branch: api
+git_branch: testing
 setup_git_repo: true
 
 project_name: icfpcontest2019
@@ -32,6 +32,7 @@ broker_api: "http://{{ rabbitmq_admin_user }}:{{ rabbitmq_application_password }
 balances_url: "https://lambdacoin.org/lambda/getbalances"
 notify_url: "https://lambdacoin.org/notify/block_created"
 timer_url: "https://lambdacoin.org/notify/block_timer"
+teams_url: "https://lambdacoin.org/teams"
 
 # Nginx settings.
 robots_txt: |
