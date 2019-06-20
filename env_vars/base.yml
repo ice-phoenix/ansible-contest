@@ -1,7 +1,7 @@
 ---
 
 git_repo: git@github.com:icfpcontest2019/grading.git
-git_branch: testing
+git_branch: api
 setup_git_repo: true
 
 project_name: icfpcontest2019
