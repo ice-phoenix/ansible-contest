@@ -1,6 +1,6 @@
 ---
 
-git_repo: git@github.com:icfpcontest2019/grading.git
+git_repo: https://github.com/ice-phoenix/grading.git
 git_branch: api
 setup_git_repo: true
 
@@ -29,10 +29,10 @@ rabbitmq_admin_password: "{{ rmq_password }}"
 broker_url: "amqp://{{ rabbitmq_application_user }}:{{ rabbitmq_application_password }}@{{ broker_ip }}:5672"
 broker_api: "http://{{ rabbitmq_admin_user }}:{{ rabbitmq_application_password }}@{{ broker_ip }}:15672/api/"
 
-balances_url: "https://lambdacoin.org/lambda/getbalances"
-notify_url: "https://lambdacoin.org/notify/block_created"
-timer_url: "https://lambdacoin.org/notify/block_timer"
-teams_url: "https://lambdacoin.org/teams"
+balances_url: "https://localhost/lambda/getbalances"
+notify_url: "https://localhost/notify/block_created"
+timer_url: "https://localhost/notify/block_timer"
+teams_url: "https://localhost/teams"
 
 # Nginx settings.
 robots_txt: |

@@ -1,6 +1,8 @@
 ---
 
 # Let's Encrypt
-domain_one: monadic-lab.org
-domain_two: lambdacoin.org
-nginx_use_letsencrypt: true
+domain_one: just-do-it.com
+domain_two: run-the-bun.com
+nginx_use_letsencrypt: false
+
+certbot_admin_email: none@none.none

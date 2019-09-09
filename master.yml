@@ -7,6 +7,7 @@
 
   vars_files:
     - env_vars/base.yml
+    - env_vars/domains.yml
     - roles/base/defaults/main.yml
     
   roles:
