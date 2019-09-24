@@ -1,0 +1,11 @@
+---
+
+- name: Setup static HTML files
+  copy:
+    src: static/
+    dest: /var/www/html
+    owner: "{{ nginx_user }}"
+    group: "{{ nginx_user }}"
+    mode: preserve
+    force: true
+  notify: reload nginx
