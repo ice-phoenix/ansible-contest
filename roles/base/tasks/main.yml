@@ -28,6 +28,8 @@
       - nethogs
       - iotop
       - sqlite
+      - cron
+      - sudo
 
   tags:
     - packages
