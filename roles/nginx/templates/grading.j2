@@ -81,6 +81,8 @@ server {
     access_log {{ nginx_access_log_file }};
     error_log {{ nginx_error_log_file }};
 
+    rewrite ^/$ /index.html last;
+
     location / {
         if (-f {{ virtualenv_path }}/maintenance_on.html) {
             return 503;
