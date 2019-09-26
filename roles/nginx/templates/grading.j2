@@ -103,6 +103,11 @@ server {
         }
     }
 
+    location /deliverables {
+        root {{ persistent_dir }};
+        autoindex on;
+    }
+
     location /rankings {
         root {{ persistent_dir }};
         autoindex on;
